@@ -1,0 +1,6 @@
+DerivedData
+*.DS_Store
+xcuserdata
+*/build/*
+*.sublime-workspace
+*.xccheckout
