@@ -53,6 +53,7 @@
     
     self.collectionView.allowsSelection = YES;
     self.collectionView.allowsMultipleSelection = YES;
+    [self.collectionView registerClass:[ADBSelectCollectionCell class] forCellWithReuseIdentifier:@"mediaSelect"];
     
     ADBMediaSelectDataSource *dataSource = (ADBMediaSelectDataSource *)self.dataSource;
     self.collectionView.dataSource = dataSource;
@@ -117,14 +118,6 @@
     layout.minimumLineSpacing = 5.f;
     
     return layout;
-}
-
-+ (Class)cellClass {
-    return [ADBSelectCollectionCell class];
-}
-
-+ (NSString *)reuseIDString {
-    return @"reuseMe";
 }
 
 #pragma mark - ADBMediaSelectController

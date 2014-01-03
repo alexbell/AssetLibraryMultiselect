@@ -46,7 +46,7 @@ const NSUInteger kInsertViewsThreshold     = 30;
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ADBSelectCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[ADBMediaSelectController reuseIDString]
+    ADBSelectCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"mediaSelect"
                                                                            forIndexPath:indexPath];
     
     ADBAssetItem *item = [self itemAtIndexPath:indexPath];

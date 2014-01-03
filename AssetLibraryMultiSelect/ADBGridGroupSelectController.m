@@ -77,31 +77,15 @@ const CGFloat kMinLineSpacing = 5.0f;
     self.view.backgroundColor = [UIColor whiteColor];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     
+    [self.collectionView registerClass:[ADBTitledCollectionCell class] forCellWithReuseIdentifier:@"groupSelect"];
     
-    //self.dataSource.delegate = self;
     self.collectionView.dataSource = self.dataSource;
-    
 }
 
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
     [self.dataSource load];
-}
-
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
-#pragma mark - ADBGridGroupSelectController
-
-+ (NSString *)reuseIDString {
-    return @"groupSelect";
-}
-
-+ (Class)cellClass {
-    return [ADBTitledCollectionCell class];
 }
 
 #pragma mark Notifications

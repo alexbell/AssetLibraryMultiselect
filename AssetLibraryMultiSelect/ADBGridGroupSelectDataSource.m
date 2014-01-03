@@ -111,7 +111,7 @@
 }
 
 - (UICollectionViewCell *)collectionView:(UICollectionView *)collectionView cellForItemAtIndexPath:(NSIndexPath *)indexPath {
-    ADBTitledCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:[ADBGridGroupSelectController reuseIDString]
+    ADBTitledCollectionCell *cell = [collectionView dequeueReusableCellWithReuseIdentifier:@"groupSelect"
                                                                            forIndexPath:indexPath];
     ADBGroupItem *item = [self itemAtIndexPath:indexPath];
     assert(item != nil);

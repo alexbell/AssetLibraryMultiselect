@@ -23,13 +23,11 @@
 - (void)loadView {
     self.collectionView = [[ADBCollectionView alloc] initWithFrame:self.navigationController.view.frame
                                              collectionViewLayout:[self layout]];
+    self.collectionView.delegate = self;
 }
 
 - (void)viewDidLoad {
-    Class cellClass = [[self class] cellClass];
-    NSString *reuseIDString = [[self class] reuseIDString];
-    [self.collectionView registerClass:cellClass forCellWithReuseIdentifier:reuseIDString];
-    self.collectionView.delegate = self;
+    [super viewDidLoad];
     
     self.navigationController.navigationBar.barTintColor = [UIColor blueColor];
 }
@@ -38,14 +36,6 @@
 
 - (UICollectionViewFlowLayout *)layout {
     return [[UICollectionViewFlowLayout alloc] init];
-}
-
-+ (Class)cellClass {
-    return [UICollectionViewCell class];
-}
-
-+ (NSString *)reuseIDString {
-    return @"ACollectionViewCell";
 }
 
 #pragma mark - ADBCollectionViewDelegate

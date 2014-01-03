@@ -12,7 +12,4 @@
 
 - (UICollectionViewFlowLayout *)layout;
 
-+ (Class)cellClass;
-+ (NSString *)reuseIDString;
-
 @end
