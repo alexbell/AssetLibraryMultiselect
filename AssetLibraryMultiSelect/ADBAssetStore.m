@@ -14,6 +14,7 @@
 NSString *const kNotificationSendAssetsUpdated = @"assetsToSendUpdated";
 NSString *const kKeyNewToSendAssetsCount       = @"newCountNumber";
 NSString *const kKeyTouchedItem                = @"item";
+NSString *const kKeyAddedOrRemoved             = @"addedOrRemoved";
 
 NSUInteger kMaxAssetsForUnpurchased            = 5;
 
@@ -21,7 +22,7 @@ NSUInteger kMaxAssetsForUnpurchased            = 5;
 
 @property (nonatomic) NSMutableArray *items;
 
-- (void)sendItemsUpdatedNotification:(ADBAssetItem *)touchedItem;
+- (void)sendItemsUpdatedNotification:(ADBAssetItem *)touchedItem addedOrRemovedFlag:(BOOL)flag;
 
 @end
 
@@ -52,7 +53,7 @@ NSUInteger kMaxAssetsForUnpurchased            = 5;
     NSUInteger count = 0;
     
     for (ADBAssetItem *item in self.items) {
-        if ([item.groupURL isEqual:groupItem.groupURL] && item.isSelected.boolValue) {
+        if ([item.groupURL isEqual:groupItem.groupURL]) {
             count++;
         }
     }
@@ -71,13 +72,13 @@ NSUInteger kMaxAssetsForUnpurchased            = 5;
             return [item1.creationDate compare:item2.creationDate];
         }];
         
-        [self sendItemsUpdatedNotification:asset];
+        [self sendItemsUpdatedNotification:asset addedOrRemovedFlag:YES];
     }
 }
 
 - (void)removeAssetItem:(ADBAssetItem *)asset {
     [self.items removeObject:asset];
-    [self sendItemsUpdatedNotification:asset];
+    [self sendItemsUpdatedNotification:asset addedOrRemovedFlag:NO];
 }
 
 - (void)removeAllItems {
@@ -101,14 +102,6 @@ NSUInteger kMaxAssetsForUnpurchased            = 5;
     else return NO;
 }
 
-- (BOOL)assetItemIsSelected:(ADBAssetItem *)asset {
-    if (![self.items containsObject:asset]) return NO;
-    
-    NSUInteger itemIndex = [self.items indexOfObject:asset];
-    ADBAssetItem *storedItem = self.items[itemIndex];
-    return storedItem.isSelected.boolValue;
-}
-
 - (BOOL)canAddAsset {
     return YES;
 }
@@ -130,12 +123,13 @@ NSUInteger kMaxAssetsForUnpurchased            = 5;
     return _items;
 }
 
-- (void)sendItemsUpdatedNotification:(ADBAssetItem *)item {
+- (void)sendItemsUpdatedNotification:(ADBAssetItem *)item addedOrRemovedFlag:(BOOL)flag {
     if (!item) return;
     
+    NSDictionary *userInfo = @{kKeyNewToSendAssetsCount: @(self.items.count), kKeyTouchedItem: item, kKeyAddedOrRemoved: @(flag)};
     NSNotification *notif = [NSNotification notificationWithName:kNotificationSendAssetsUpdated
                                                           object:self
-                                                        userInfo:@{kKeyNewToSendAssetsCount: @(self.items.count), kKeyTouchedItem: item}];
+                                                        userInfo:userInfo];
     [[NSNotificationCenter defaultCenter] postNotification:notif];
 }
 

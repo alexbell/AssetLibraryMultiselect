@@ -55,7 +55,7 @@ const NSUInteger kInsertViewsThreshold     = 30;
     cell.thumbView.image = item.thumbImage;
     
     //is the cell selected, if so give it a checkmark
-    if ([[ADBAssetStore instance] assetItemIsSelected:item]) {
+    if ([[ADBAssetStore instance] containsAssetItem:item]) {
         [cell addCheckmark];
         [collectionView selectItemAtIndexPath:indexPath animated:NO scrollPosition:UICollectionViewScrollPositionNone];
     } else {

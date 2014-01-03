@@ -146,8 +146,7 @@
         ADBAssetItem *item = [self.dataSource itemAtIndexPath:indexPath];
         
         if ([item isEqual:touchedItem]) {
-            BOOL isSelected = touchedItem.isSelected.boolValue;
-            item.selected = @(isSelected);
+            BOOL isSelected = [notif.userInfo[kKeyAddedOrRemoved] boolValue];
             
             if (isSelected) {
                 [self.collectionView selectItemAtIndexPath:indexPath
@@ -175,13 +174,11 @@
 
 - (void)collectionView:(UICollectionView *)collectionView didSelectItemAtIndexPath:(NSIndexPath *)indexPath {
     ADBAssetItem *item = [self.dataSource itemAtIndexPath:indexPath];
-    item.selected = @YES;
     [[ADBAssetStore instance] addAssetItem:item];
 }
 
 - (void)collectionView:(UICollectionView *)collectionView didDeselectItemAtIndexPath:(NSIndexPath *)indexPath {
     ADBAssetItem *item = [self.dataSource itemAtIndexPath:indexPath];
-    item.selected = @NO;
     [[ADBAssetStore instance] removeAssetItem:item];
 }
 

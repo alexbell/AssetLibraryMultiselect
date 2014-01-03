@@ -72,9 +72,6 @@ BOOL assetGroupIsCameraRoll(ALAssetsGroup *group) {
             fetchedAssets++;
             ADBAssetItem *assetItem = [ADBAssetItem itemWithAsset:result];
             assetItem.groupURL = [group valueForProperty:ALAssetsGroupPropertyURL];
-            if ([[ADBAssetStore instance] containsAssetItem:assetItem]) {
-                assetItem.selected = @YES;
-            }
             
             @synchronized(selfRef.delegate) {
                 [selfRef.delegate reader:selfRef

@@ -9,6 +9,7 @@
 extern NSString *const kNotificationSendAssetsUpdated;
 extern NSString *const kKeyNewToSendAssetsCount;
 extern NSString *const kKeyTouchedItem;
+extern NSString *const kKeyAddedOrRemoved; // 1 if added, 0 if removed
 
 @class ADBAssetItem;
 @class ADBGroupItem;
@@ -29,7 +30,6 @@ extern NSString *const kKeyTouchedItem;
 - (ADBAssetItem *)itemAtIndex:(NSUInteger)index;
 
 - (BOOL)containsAssetItem:(ADBAssetItem *)asset;
-- (BOOL)assetItemIsSelected:(ADBAssetItem *)asset;
 
 //useful for subclasses
 - (BOOL)canAddAsset;

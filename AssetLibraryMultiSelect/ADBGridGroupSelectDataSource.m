@@ -147,7 +147,6 @@
             [self.controller.collectionView insertItemsAtIndexPaths:@[ indexPath ]];
         } else {
             BOOL shouldSelect = [self shouldToggleOn:group];
-            asset.selected = @(shouldSelect);
             
             if (shouldSelect) {
                 [[ADBAssetStore instance] addAssetItem:asset];

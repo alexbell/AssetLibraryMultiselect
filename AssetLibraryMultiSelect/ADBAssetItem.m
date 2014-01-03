@@ -23,12 +23,6 @@
     }
 }
 
-- (NSString *)description {
-    NSString *desc = [NSString stringWithFormat:@"asset:%@ | isSelected:%ld",
-                      self.asset.defaultRepresentation.url.absoluteString, (long)self.isSelected.integerValue];
-    return desc;
-}
-
 + (instancetype)itemWithAsset:(ALAsset *)asset {
     if (!asset) return nil;
     
@@ -79,14 +73,6 @@
     }
     
     return _avAsset;
-}
-
-- (NSNumber *)isSelected {
-    if (!_selected) {
-        return @NO;
-    } else {
-        return _selected;
-    }
 }
 
 - (NSNumber *)videoLength {

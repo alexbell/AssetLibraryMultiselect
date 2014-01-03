@@ -27,8 +27,6 @@ typedef enum {
 @property (nonatomic) NSDate *creationDate;
 @property (nonatomic, copy) NSString *fileExtension;
 
-@property (nonatomic,getter = isSelected) NSNumber *selected;
-
 + (instancetype)itemWithAsset:(ALAsset *)asset;
 
 - (UIImage *)detailImage;

@@ -41,14 +41,6 @@ const NSInteger kBarItemTagCustomized = 111;
 
 @end
 
-UIImage* addRemoveImageForItem(ADBAssetItem *item) {
-    if (item.isSelected.boolValue) {
-        return [UIImage imageNamed:@"subtract-document"];
-    } else {
-        return [UIImage imageNamed:@"add-document"];
-    }
-}
-
 @implementation ADBMediaDetailController
 
 - (id)initWithSelectedItem:(ADBAssetItem *)item inItems:(NSArray *)items {
@@ -141,6 +133,7 @@ UIImage* addRemoveImageForItem(ADBAssetItem *item) {
 #pragma mark Notifications
 
 - (void)receivedAssetStoreCountUpdate:(NSNotification *)notif {
+    //assets added or removed, change title
     self.title = self.title;
 }
 
