@@ -43,20 +43,23 @@ BOOL assetGroupIsCameraRoll(ALAssetsGroup *group) {
 
 #pragma mark -
 #pragma mark Reading
+
 - (void)readTopLevelGroups {
     __weak ADBAssetReader *selfRef = self;
-    
     __block NSMutableArray *groups = [NSMutableArray array];
-    [self.library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos | ALAssetsGroupAlbum
-                                usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
-                                    if (group && group.numberOfAssets > 0) {
-                                        [groups addObject:group];
-                                    } else {
-                                        [selfRef fetchedTopLevelGroups:groups];
-                                    }
-                                } failureBlock:^(NSError *error) {
-                                    [selfRef.delegate reader:selfRef didError:error];
-                                }];
+    
+    dispatch_async(dispatch_get_global_queue(QOS_CLASS_USER_INITIATED, 0), ^{
+        [selfRef.library enumerateGroupsWithTypes:ALAssetsGroupSavedPhotos | ALAssetsGroupAlbum
+                                       usingBlock:^(ALAssetsGroup *group, BOOL *stop) {
+                                           if (group && group.numberOfAssets > 0) {
+                                               [groups addObject:group];
+                                           } else {
+                                               [selfRef fetchedTopLevelGroups:groups];
+                                           }
+                                       } failureBlock:^(NSError *error) {
+                                           [selfRef.delegate reader:selfRef didError:error];
+                                       }];
+    });
 }
 
 - (void)readAssetsInGroup:(ALAssetsGroup *)group {
@@ -117,7 +120,10 @@ BOOL assetGroupIsCameraRoll(ALAssetsGroup *group) {
         [groupItems addObject:[ADBGroupItem itemWithGroup:group]];
     }
     
-    [self.delegate reader:self didReadTopLevelGroups:groupItems];
+    __weak typeof(self) welf = self;
+    dispatch_async(dispatch_get_main_queue(), ^{
+        [welf.delegate reader:self didReadTopLevelGroups:groupItems];
+    });
 }
 
 @end

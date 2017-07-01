@@ -9,18 +9,18 @@
 @class ALAssetsLibrary;
 @class ADBAppDelegate;
 
-BOOL ADBIsTablet();
+BOOL ADBIsTablet(void);
 BOOL ADBIsStringWithText(id object);
 BOOL ADBIsCollectionWithObjects(id object);
 NSString* ADBCoalesceString(NSString *string);
 
-ALAssetsLibrary* assetsLibrary();
+ALAssetsLibrary* assetsLibrary(void);
 
 BOOL isAccessError(NSError *error);
 UIAlertView* ADBPopup(NSString *title, NSString *message);
 UIAlertView* ADBPopupDismiss(NSString *title, NSString *message, NSString *dismissTitle);
 
-UIAlertView* ADBLibraryAccessDeniedPopup();
+UIAlertView* ADBLibraryAccessDeniedPopup(void);
 
 CGFloat distanceBetweenPoints(CGPoint a, CGPoint b);
 CGRect logRect(CGRect rect);

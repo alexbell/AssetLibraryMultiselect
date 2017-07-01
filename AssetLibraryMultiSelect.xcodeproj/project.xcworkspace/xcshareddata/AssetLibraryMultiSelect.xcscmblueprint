@@ -1,0 +1,30 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "9F61C7663CA819116AD42FE6FEA29606A2D9A34A",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "9F61C7663CA819116AD42FE6FEA29606A2D9A34A" : 0,
+    "EA32E647612B3E4C99557394FE0723D07911B744" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "BA10AE25-30C0-436D-AFE7-85204BECDAE5",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "9F61C7663CA819116AD42FE6FEA29606A2D9A34A" : "AssetLibraryMultiSelect\/",
+    "EA32E647612B3E4C99557394FE0723D07911B744" : "AssetLibraryMultiSelect\/thirdparty\/nimbus\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "AssetLibraryMultiSelect",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "AssetLibraryMultiSelect.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "github.com:alexbell\/AssetLibraryMultiselect.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "9F61C7663CA819116AD42FE6FEA29606A2D9A34A"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/jverkoey\/nimbus.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "EA32E647612B3E4C99557394FE0723D07911B744"
+    }
+  ]
+}
